@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Artistic E-Commerce</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- Floating Controls -->
+<div class="floating-controls">
+    <button id="themeToggle">☀️</button>
+    <div id="userCartControls" class="cart-wrapper hidden">
+        <button id="cartBtn">🛒</button>
+        <span id="cartCount" class="cart-count">0</span>
+    </div>
+    <button id="logoutBtn">⎋</button>
+</div>
+
+<!-- Role Selection -->
+<section id="roleSelection" class="page active">
+    <div class="glass-card center-card">
+        <h1>Select Role</h1>
+        <button onclick="goToLogin('admin')" class="btn-glass">Admin</button>
+        <button onclick="goToLogin('user')" class="btn-glass">User</button>
+    </div>
+</section>
+
+<!-- Login Page -->
+<section id="loginPage" class="page">
+    <div class="glass-card center-card">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button onclick="login()" class="btn-glass">Login</button>
+    </div>
+</section>
+
+<!-- Admin Dashboard -->
+<section id="adminPage" class="page">
+    <h1>Admin Dashboard</h1>
+    <form id="productForm" class="glass-card">
+        <input type="file" id="productImage" accept="image/*" required />
+        <input type="text" id="productName" placeholder="Product Name" required />
+        <input type="number" id="productPrice" placeholder="Price" required />
+        <input type="number" id="productQty" placeholder="Quantity" required />
+        <button type="submit" class="btn-glass">Add Product</button>
+    </form>
+    <button onclick="openAdminProductsPage()" class="btn-glass">View Saved Products</button>
+</section>
+
+<!-- Admin Products Page -->
+<section id="adminProductsPage" class="page">
+    <h1>Saved Products</h1>
+    <div id="adminProductsList" class="product-grid"></div>
+    <button onclick="showPage('adminPage')" class="btn-glass">⬅ Back to Dashboard</button>
+</section>
+
+<!-- User Dashboard -->
+<section id="userPage" class="page">
+    <h1>Products</h1>
+    <div id="userProducts" class="product-grid"></div>
+</section>
+
+<!-- Cart Page -->
+<section id="cartPage" class="page">
+    <h1>Your Cart</h1>
+    <div id="cartItems" class="product-grid"></div>
+    <h2 id="totalPrice">Total: $0</h2>
+    <button onclick="goToCheckout()" class="btn-glass">Checkout</button>
+    <button onclick="goHome()" class="btn-glass">🏠 Back to Shopping</button>
+</section>
+
+<!-- Checkout Page -->
+<section id="checkoutPage" class="page">
+    <div class="glass-card center-card checkout-card">
+        <h1>Checkout</h1>
+        <input type="text" id="address" placeholder="Enter Address" required />
+        <input type="text" id="phone" placeholder="Enter Phone Number" required />
+        <div id="orderSummary" class="summary-box"></div>
+        <button onclick="goToInvoice()" class="btn-glass">Proceed to Billing</button>
+        <button onclick="goHome()" class="btn-glass">🏠 Back to Shopping</button>
+    </div>
+</section>
+
+<!-- Invoice Page -->
+<section id="invoicePage" class="page">
+    <h1>Invoice</h1>
+    <div id="invoiceDetails" class="summary-box"></div>
+    <h2 id="invoiceTotal"></h2>
+    <p>✅ Order Confirmed! Thank you for shopping.</p>
+    <button onclick="goHome()" class="btn-glass">🏠 Back to Shopping</button>
+</section>
+
+<!-- Popup Notification -->
+<div id="popup" class="popup">Added to Cart!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
